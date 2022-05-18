@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
+
+jobs:
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build Changelog 🏗
+        id: github_release
+        uses: mikepenz/release-changelog-builder-action@v2.9.0
+        with:
+          configuration: "./.github/config/release-changelog-builder-action.json"
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      - name: Install printf 📁
+        run: |
+          sudo apt install --yes coreutils
+          sudo apt update
+
+      - name: Create Release 🖋
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          body: ${{steps.github_release.outputs.changelog}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      - name: Write in CHANGELOG.md ✍
+        # Create CHANGELOG.md if not exist and write new changes in CHANGELOG.md
+        run: |
+          printf "" >> CHANGELOG.md
+          printf "# $(date '+%Y-%m-%d') 👨‍💻 ${{ github.ref_name }}\n${{steps.github_release.outputs.changelog}}\n\n$(cat CHANGELOG.md)" > CHANGELOG.md
+
+      - name: Commit CHANGELOG.md ✍
+        run: |
+          git config --local user.email "awiteb@hotmail.com"
+          git config --local user.name "TheAwiteb"
+          git add CHANGELOG.md
+          git commit -m "🗎: Update CHANGELOG.md for ${{ github.ref_name }}"
+
+      - name: Push CHANGELOG.md 🌐
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          branch: master
