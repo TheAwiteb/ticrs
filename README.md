@@ -30,9 +30,6 @@ Providing an exciting experience in the command line interface with the [`clap`]
 [`comfy-table`]: https://crates.io/crates/comfy-table
 [`colored`]: https://crates.io/crates/colored
 
-### Easy to play and control
-As you only need to activate `-c/--clean-window` to clean the interface after each round
-
 ## Install
 ```bash
 # Clone the repo
@@ -55,14 +52,16 @@ USAGE:
 OPTIONS:
     -c, --clean-window    Clean the window every round
     -h, --help            Print help information
+    -m, --manually        Make all players manual type
+    -r, --randomly        Make all players random type
     -V, --version         Print version information
 ```
 
 ## Images
 |                    CLI                      |                    Game                    |
 |:-------------------------------------------:|:------------------------------------------:|
-| ![Help message](https://i.suar.me/nBKvE/l)  | ![Without clen](https://i.suar.me/XpYQm/l) |
-| ![Option fixer](https://i.suar.me/5nJ49/l)  | ![X is Winner](https://i.suar.me/WQZg0/l) |
+| ![Help message](https://i.suar.me/qwK4x/l)  | ![Without clen](https://i.suar.me/NA320/l) |
+| ![Option fixer](https://i.suar.me/e7qMG/l)  | ![X is Winner](https://i.suar.me/OrPzM/l) |
 
 ## License
 GNU Affero General Public License version 3 of the license for more see http://www.gnu.org/licenses/
