@@ -1,3 +1,4 @@
+use super::cli::CliApp;
 ///                       Rust Tic Tac Toy (x/o)
 ///                 Copyright (C) 2020-2022  TheAwiteb
 ///                 https://github.com/TheAwiteb/tic-rs
@@ -19,32 +20,40 @@ use colored::Colorize;
 use promptly::{prompt, ReadlineError};
 
 /// Ask user to add player
-pub fn get_player(pointer: Pointers) -> Result<Player, ReadlineError> {
-    let types: Vec<&str> = PlayTypes::types();
-    loop {
-        let user_input: String = prompt(format!(
-            "Enter type of player {} ({})",
-            pointer.to_string(),
-            types
-                .iter()
-                .map(|t| format!(
-                    "{}/{}",
-                    t.chars()
-                        .next()
-                        .unwrap_or_else(|| panic!("Invalid type {t}")),
-                    t
-                ))
-                .collect::<Vec<_>>()
-                .join(", "),
-        ))?;
-        if let Some(play_type) = PlayTypes::from_str(user_input.as_ref()) {
-            return Ok(Player::new(play_type, pointer));
+pub fn get_player(pointer: Pointers, app: &CliApp) -> Result<Player, ReadlineError> {
+    if app.randomly || app.manually {
+        if app.randomly {
+            Ok(Player::new(PlayTypes::Random, pointer))
         } else {
-            eprintln!(
-                "{}: '{}' is not play type",
-                "Type Error".red(),
-                user_input.bold()
-            )
+            Ok(Player::new(PlayTypes::Manual, pointer))
+        }
+    } else {
+        let types: Vec<&str> = PlayTypes::types();
+        loop {
+            let user_input: String = prompt(format!(
+                "Enter type of player {} ({})",
+                pointer.to_string(),
+                types
+                    .iter()
+                    .map(|t| format!(
+                        "{}/{}",
+                        t.chars()
+                            .next()
+                            .unwrap_or_else(|| panic!("Invalid type {t}")),
+                        t
+                    ))
+                    .collect::<Vec<_>>()
+                    .join(", "),
+            ))?;
+            if let Some(play_type) = PlayTypes::from_str(user_input.as_ref()) {
+                return Ok(Player::new(play_type, pointer));
+            } else {
+                eprintln!(
+                    "{}: '{}' is not play type",
+                    "Type Error".red(),
+                    user_input.bold()
+                )
+            }
         }
     }
 }

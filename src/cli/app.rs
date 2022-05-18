@@ -22,6 +22,12 @@ pub struct CliApp {
     #[clap(long, short)]
     /// Clean the window every round
     pub clean_window: bool,
+    #[clap(long, short)]
+    /// Make all players random type
+    pub randomly: bool,
+    #[clap(long, short)]
+    /// Make all players manual type
+    pub manually: bool,
 }
 
 /// Parses the command line arguments, and return `CliApp` instance

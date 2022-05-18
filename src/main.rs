@@ -30,8 +30,8 @@ use utils::get_player;
 fn main() -> Result<(), ReadlineError> {
     let app: cli::CliApp = cli::parse();
 
-    let mut player_x: Player = get_player(Pointers::X)?;
-    let player_o: Player = get_player(Pointers::O)?;
+    let mut player_x: Player = get_player(Pointers::X, &app)?;
+    let player_o: Player = get_player(Pointers::O, &app)?;
     let mut board: Board = Board::new();
 
     // Game loop
