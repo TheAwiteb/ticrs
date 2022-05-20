@@ -1,6 +1,6 @@
-///                       Rust Tic Tac Toy (x/o)
-///                 Copyright (C) 2020-2022  TheAwiteb
-///                 https://github.com/TheAwiteb/tic-rs
+/// Rust Tic Tac Toy (x/o)
+/// Copyright (C) 2020-2022  TheAwiteb
+/// <https://github.com/TheAwiteb/tic-rs>
 ///
 /// This program is free software: you can redistribute it and/or modify it under
 /// the terms of the GNU Affero General Public License as published by the Free
@@ -14,23 +14,6 @@
 ///
 /// You should have received a copy of the GNU Affero General Public License along
 /// with this program.  If not, see <http://www.gnu.org/licenses/>.
-use clap::Parser;
+mod app;
 
-#[derive(Parser, Debug)]
-#[clap(version, about, long_about = None, rename_all = "kebab-case")]
-pub struct CliApp {
-    #[clap(long, short)]
-    /// Clean the window every round
-    pub clean_window: bool,
-    #[clap(long, short)]
-    /// Make all players random type
-    pub randomly: bool,
-    #[clap(long, short)]
-    /// Make all players manual type
-    pub manually: bool,
-}
-
-/// Parses the command line arguments, and return `CliApp` instance
-pub fn parse() -> CliApp {
-    CliApp::parse()
-}
+pub use app::*;

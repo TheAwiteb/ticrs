@@ -1,7 +1,6 @@
-use super::cli::CliApp;
-///                       Rust Tic Tac Toy (x/o)
-///                 Copyright (C) 2020-2022  TheAwiteb
-///                 https://github.com/TheAwiteb/tic-rs
+/// Rust Tic Tac Toy (x/o)
+/// Copyright (C) 2020-2022  TheAwiteb
+/// <https://github.com/TheAwiteb/tic-rs>
 ///
 /// This program is free software: you can redistribute it and/or modify it under
 /// the terms of the GNU Affero General Public License as published by the Free
@@ -15,9 +14,11 @@ use super::cli::CliApp;
 ///
 /// You should have received a copy of the GNU Affero General Public License along
 /// with this program.  If not, see <http://www.gnu.org/licenses/>.
-use super::tictactoy::player::{PlayTypes, Player, Pointers};
+use super::cli::CliApp;
 use colored::Colorize;
 use promptly::{prompt, ReadlineError};
+use std::str::FromStr;
+use tictactoy::player::{PlayTypes, Player, Pointers};
 
 /// Ask user to add player
 pub fn get_player(pointer: Pointers, app: &CliApp) -> Result<Player, ReadlineError> {
@@ -45,7 +46,7 @@ pub fn get_player(pointer: Pointers, app: &CliApp) -> Result<Player, ReadlineErr
                     .collect::<Vec<_>>()
                     .join(", "),
             ))?;
-            if let Some(play_type) = PlayTypes::from_str(user_input.as_ref()) {
+            if let Ok(play_type) = PlayTypes::from_str(user_input.as_ref()) {
                 return Ok(Player::new(play_type, pointer));
             } else {
                 eprintln!(

@@ -7,10 +7,12 @@ readme = "README.md"
 repository = "https://github.com/TheAwiteb/tic-rs"
 rust-version = "1.60" # 7737e0b5c 2022-04-04
 version = "0.1.0"
+default-run = "client"
 
-[dependencies]
-clap = { version = "3.1.18", features = ["derive"] }
-comfy-table = "5.0.1"
-promptly = "0.3.0"
-colored = "2.0.0"
-rand = "0.8.5"
+[[bin]]
+name = "client"
+path = "./tic-rs-client/src/main.rs"
+
+[workspace]
+members = ["tic-rs-client", "tictactoy"]
+default-members = ["tic-rs-client"]

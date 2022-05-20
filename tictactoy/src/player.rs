@@ -1,6 +1,6 @@
-///                       Rust Tic Tac Toy (x/o)
-///                 Copyright (C) 2020-2022  TheAwiteb
-///                 https://github.com/TheAwiteb/tic-rs
+/// Rust Tic Tac Toy (x/o)
+/// Copyright (C) 2020-2022  TheAwiteb
+/// <https://github.com/TheAwiteb/tic-rs>
 ///
 /// This program is free software: you can redistribute it and/or modify it under
 /// the terms of the GNU Affero General Public License as published by the Free
@@ -18,6 +18,7 @@ use super::board::{Board, Point};
 use colored::*;
 use promptly::{prompt, ReadlineError};
 use rand::seq::SliceRandom;
+use std::str::FromStr;
 
 pub enum State {
     Watching,
@@ -109,15 +110,6 @@ impl PlayTypes {
     pub fn types<'a>() -> Vec<&'a str> {
         vec!["Manual", "Random"]
     }
-
-    /// Returns type from `&str`
-    pub fn from_str(str_type: &str) -> Option<Self> {
-        match str_type.to_lowercase().as_str() {
-            "manual" | "m" => Some(Self::Manual),
-            "random" | "r" => Some(Self::Random),
-            _ => None,
-        }
-    }
 }
 
 impl State {
@@ -145,6 +137,18 @@ impl Pointers {
     /// Returns `true` if is X
     pub fn is_x(&self) -> bool {
         matches!(self, Self::X)
+    }
+}
+
+impl FromStr for PlayTypes {
+    type Err = ();
+
+    fn from_str(str_type: &str) -> Result<Self, Self::Err> {
+        match str_type.to_lowercase().as_str() {
+            "manual" | "m" => Ok(Self::Manual),
+            "random" | "r" => Ok(Self::Random),
+            _ => Err(()),
+        }
     }
 }
 
