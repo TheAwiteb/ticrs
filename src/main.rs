@@ -27,6 +27,7 @@ use tictactoy::board::*;
 use tictactoy::player::*;
 use utils::get_player;
 
+/// Main client function
 fn main() -> Result<(), ReadlineError> {
     let app: cli::CliApp = cli::parse();
 

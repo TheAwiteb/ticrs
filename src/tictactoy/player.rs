@@ -131,6 +131,7 @@ impl State {
         matches!(self, Self::Playing)
     }
 
+    /// Switch the [`State`]
     pub fn switch_state(&self) -> Self {
         if self.is_playing() {
             Self::Watching
