@@ -1,6 +1,11 @@
+<div align="center">
+
 # Tic-rs
+Rust Tic Tac Toy (x/o) 🦀
+
+</div>
+
 ```
-                       Rust Tic Tac Toy (x/o)
                  Copyright (C) 2020-2022  TheAwiteb
                  https://github.com/TheAwiteb/tic-rs
 
@@ -34,13 +39,14 @@ Providing an exciting experience in the command line interface with the [`clap`]
 ```bash
 # Clone the repo
 git clone https://github.com/TheAwiteb/tic-rs
-# change directory to it
+# Change directory to it
 cd tic-rs
 # Build it with cargo
 cargo build --release
-# Move the binary to /usr/bin (Unix like system) (need permission to move (not run))
-sudo mv ./target/release/tic-rs /usr/bin/
-# Run help message
+# Move the binary to `/usr/bin` (Unix like system) (need permission to move (not run))
+# You can change binary directory to `~/.cargo/bin` if its exists and its in `$PATH`
+sudo mv ./target/release/tic-rs-client /usr/bin/tic-rs
+# Print help message
 tic-rs --help
 ```
 
