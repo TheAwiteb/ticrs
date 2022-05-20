@@ -30,7 +30,7 @@ fn main() -> Result<(), ReadlineError> {
 
     let mut player_x: Player = get_player(Pointers::X, &app)?;
     let player_o: Player = get_player(Pointers::O, &app)?;
-    let mut board: Board = Board::new();
+    let mut board: Board = Board::default();
 
     // Game loop
     loop {
