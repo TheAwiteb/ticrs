@@ -17,6 +17,7 @@
 use super::cli::CliApp;
 use colored::Colorize;
 use promptly::{prompt, ReadlineError};
+use std::str::FromStr;
 use tictactoy::player::{PlayTypes, Player, Pointers};
 
 /// Ask user to add player
@@ -45,7 +46,7 @@ pub fn get_player(pointer: Pointers, app: &CliApp) -> Result<Player, ReadlineErr
                     .collect::<Vec<_>>()
                     .join(", "),
             ))?;
-            if let Some(play_type) = PlayTypes::from_str(user_input.as_ref()) {
+            if let Ok(play_type) = PlayTypes::from_str(user_input.as_ref()) {
                 return Ok(Player::new(play_type, pointer));
             } else {
                 eprintln!(
