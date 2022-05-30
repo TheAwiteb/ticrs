@@ -1,13 +1,13 @@
 <div align="center">
 
-# Tic-rs
+# Ticrs
 Rust Tic Tac Toy (x/o) 🦀
 
 </div>
 
 ```
                  Copyright (C) 2020-2022  TheAwiteb
-                 https://github.com/TheAwiteb/tic-rs
+                 https://github.com/TheAwiteb/ticrs
 
 This program is free software: you can redistribute it and/ormodify it under
 the terms of the GNU Affero General Public License as published bythe Free
@@ -38,22 +38,22 @@ Providing an exciting experience in the command line interface with the [`clap`]
 ## Install
 ```bash
 # Clone the repo
-git clone https://github.com/TheAwiteb/tic-rs
+git clone https://github.com/TheAwiteb/ticrs
 # Change directory to it
-cd tic-rs
+cd ticrs
 # Build it with cargo
 cargo build --release
 # Move the binary to `/usr/bin` (Unix like system) (need permission to move (not run))
 # You can change binary directory to `~/.cargo/bin` if its exists and its in `$PATH`
-sudo mv ./target/release/tic-rs-client /usr/bin/tic-rs
+sudo mv ./target/release/ticrs-client /usr/bin/ticrs
 # Print help message
-tic-rs --help
+ticrs --help
 ```
 
 ## Using
 ```
 USAGE:
-    tic-rs [OPTIONS]
+    ticrs [OPTIONS]
 
 OPTIONS:
     -c, --clean-window    Clean the window every round

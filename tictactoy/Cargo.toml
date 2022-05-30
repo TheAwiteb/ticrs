@@ -1,9 +1,9 @@
 [package]
 name = "tictactoy"
 authors = ["Awiteb github.com/TheAwiteb"]
-description = "tic-rs lib"
+description = "ticrs lib"
 edition = "2021"
-repository = "https://github.com/TheAwiteb/tic-rs"
+repository = "https://github.com/TheAwiteb/ticrs"
 rust-version = "1.60" # 7737e0b5c 2022-04-04
 version = "0.1.0"
 

@@ -1,18 +1,3 @@
-[package]
-authors = ["Awiteb github.com/TheAwiteb"]
-description = "Rust Tic Tac Toy (x/o)"
-edition = "2021"
-name = "tic-rs"
-readme = "README.md"
-repository = "https://github.com/TheAwiteb/tic-rs"
-rust-version = "1.60" # 7737e0b5c 2022-04-04
-version = "0.1.0"
-default-run = "client"
-
-[[bin]]
-name = "client"
-path = "./tic-rs-client/src/main.rs"
-
 [workspace]
-members = ["tic-rs-client", "tictactoy"]
-default-members = ["tic-rs-client"]
+members = ["ticrs-client", "tictactoy"]
+default-members = ["ticrs-client"]
