@@ -20,17 +20,19 @@ use promptly::{prompt, ReadlineError};
 use rand::seq::SliceRandom;
 use std::str::FromStr;
 
+#[derive(Debug, Eq, PartialEq)]
 pub enum State {
     Watching,
     Playing,
 }
 
+#[derive(Debug, Eq, PartialEq)]
 pub enum PlayTypes {
     Manual,
     Random,
 }
 
-#[derive(Eq, PartialEq)]
+#[derive(Debug, Eq, PartialEq)]
 pub enum Pointers {
     X,
     O,
