@@ -20,7 +20,7 @@ use std::str::FromStr;
 use comfy_table::presets::UTF8_NO_BORDERS;
 use comfy_table::{Cell, Color, ContentArrangement, Row, Table};
 
-#[derive(Clone, Copy, Eq, PartialEq)]
+#[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub enum Point {
     X,
     O,
@@ -97,7 +97,7 @@ impl Board {
     }
 
     /// Returns `Pointers` instance if there win in rows
-    fn is_rows_winner<'a>(&self, player: &'a Player) -> Option<&'a Pointers> {
+    pub fn is_rows_winner<'a>(&self, player: &'a Player) -> Option<&'a Pointers> {
         let rows = self.rows();
         let player_point = Point::from_str(player.pointer.to_string().as_str()).unwrap();
 
@@ -112,7 +112,7 @@ impl Board {
     }
 
     /// Returns `Pointers` instance if there win in columns
-    fn is_columns_winner<'a>(&self, player: &'a Player) -> Option<&'a Pointers> {
+    pub fn is_columns_winner<'a>(&self, player: &'a Player) -> Option<&'a Pointers> {
         let columns = self.columns();
         let player_point = Point::from_str(player.pointer.to_string().as_str()).unwrap();
 
@@ -127,7 +127,7 @@ impl Board {
     }
 
     /// Returns `Pointers` instance if there win in bla
-    fn is_horizontals_winner<'a>(&self, player: &'a Player) -> Option<&'a Pointers> {
+    pub fn is_horizontals_winner<'a>(&self, player: &'a Player) -> Option<&'a Pointers> {
         let player_point = Point::from_str(player.pointer.to_string().as_str()).unwrap();
         if self
             .horizontals()
