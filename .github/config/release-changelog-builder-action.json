@@ -1,0 +1,54 @@
+{
+  "categories": [
+    {
+      "title": "## 🚀 Features",
+      "labels": [
+        "🚀 feature"
+      ]
+    },
+    {
+      "title": "## 🐙 Fixes",
+      "labels": [
+        "🐙 fix",
+        "🐙 bug"
+      ]
+    },
+    {
+      "title": "## 🧪 Tests",
+      "labels": [
+        "🧪 test"
+      ]
+    },
+    {
+      "title": "## 📝 Documentation",
+      "labels": [
+        "📝 documentation"
+      ]
+    },
+    {
+      "title": "## 💻 Command Line Interface Improvement",
+      "labels": [
+        "💻 CLI"
+      ]
+    },
+    {
+      "title": "## 👤 Client Side Improvement",
+      "labels": [
+        "👤 client"
+      ]
+    },
+    {
+      "title": "## 🕸 Server Side Improvement",
+      "labels": [
+        "🕸 server"
+      ]
+    }
+  ],
+  "sort": "ASC",
+  "pr_template": "- ${{TITLE}}\n\t- PR: [#${{NUMBER}}](https://github.com/${{OWNER}}/${{REPO}}/pull/${{NUMBER}})\n\t- Author:\n\t\t- [@${{AUTHOR}}](https://github.com/${{AUTHOR}})",
+  "template": "${{CHANGELOG}}\n\n<details>\n<summary>Uncategorized</summary>\n\n${{UNCATEGORIZED}}\n</details>\n<a href='https://github.com/${{OWNER}}/${{REPO}}/compare/${{FROM_TAG}}...${{TO_TAG}}'>Commits</a>",
+  "empty_template": "- No pull requests, check <a href='https://github.com/${{OWNER}}/${{REPO}}/compare/${{FROM_TAG}}...${{TO_TAG}}'>Commits</a>",
+  "max_tags_to_fetch": 200,
+  "max_pull_requests": 200,
+  "max_back_track_time_days": 365
+}

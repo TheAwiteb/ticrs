@@ -1,0 +1,14 @@
+[package]
+name = "tictactoy"
+authors = ["Awiteb github.com/TheAwiteb"]
+description = "ticrs lib"
+edition = "2021"
+repository = "https://github.com/TheAwiteb/ticrs"
+rust-version = "1.60" # 7737e0b5c 2022-04-04
+version = "0.1.0"
+
+[dependencies]
+promptly = "0.3.0"
+colored = "2.0.0"
+comfy-table = "5.0.1"
+rand = "0.8.5"

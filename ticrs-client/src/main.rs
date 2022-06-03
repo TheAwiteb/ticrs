@@ -1,6 +1,6 @@
-///                       Rust Tic Tac Toy (x/o)
-///                 Copyright (C) 2020-2022  TheAwiteb
-///                 https://github.com/TheAwiteb/tic-rs
+/// Rust Tic Tac Toy (x/o)
+/// Copyright (C) 2020-2022  TheAwiteb
+/// <https://github.com/TheAwiteb/ticrs>
 ///
 /// This program is free software: you can redistribute it and/or modify it under
 /// the terms of the GNU Affero General Public License as published by the Free
@@ -14,10 +14,7 @@
 ///
 /// You should have received a copy of the GNU Affero General Public License along
 /// with this program.  If not, see <http://www.gnu.org/licenses/>.
-extern crate core;
-
 mod cli;
-mod tictactoy;
 mod utils;
 
 use colored::Colorize;
@@ -27,12 +24,13 @@ use tictactoy::board::*;
 use tictactoy::player::*;
 use utils::get_player;
 
+/// Main client function
 fn main() -> Result<(), ReadlineError> {
     let app: cli::CliApp = cli::parse();
 
-    let mut player_x: Player = get_player(Pointers::X)?;
-    let player_o: Player = get_player(Pointers::O)?;
-    let mut board: Board = Board::new();
+    let mut player_x: Player = get_player(Pointers::X, &app)?;
+    let player_o: Player = get_player(Pointers::O, &app)?;
+    let mut board: Board = Board::default();
 
     // Game loop
     loop {

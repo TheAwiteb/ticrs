@@ -1,6 +1,6 @@
-///                       Rust Tic Tac Toy (x/o)
-///                 Copyright (C) 2020-2022  TheAwiteb
-///                 https://github.com/TheAwiteb/tic-rs
+/// Rust Tic Tac Toy (x/o)
+/// Copyright (C) 2020-2022  TheAwiteb
+/// <https://github.com/TheAwiteb/ticrs>
 ///
 /// This program is free software: you can redistribute it and/or modify it under
 /// the terms of the GNU Affero General Public License as published by the Free
@@ -15,11 +15,12 @@
 /// You should have received a copy of the GNU Affero General Public License along
 /// with this program.  If not, see <http://www.gnu.org/licenses/>.
 use super::player::{Player, Pointers};
+use std::str::FromStr;
 
 use comfy_table::presets::UTF8_NO_BORDERS;
 use comfy_table::{Cell, Color, ContentArrangement, Row, Table};
 
-#[derive(Clone, Copy, Eq, PartialEq)]
+#[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub enum Point {
     X,
     O,
@@ -27,15 +28,6 @@ pub enum Point {
 }
 
 impl Point {
-    /// Returns `Point` instance from string
-    pub fn from_str(str_point: &str) -> Option<Self> {
-        match str_point.to_lowercase().as_str() {
-            "x" => Some(Self::X),
-            "o" => Some(Self::O),
-            _ => None,
-        }
-    }
-
     /// Returns point num if it is empty
     pub fn num(&self) -> Option<usize> {
         match self {
@@ -80,13 +72,6 @@ pub struct Board {
 }
 
 impl Board {
-    /// Create a new `Board` instance
-    pub fn new() -> Self {
-        Self {
-            board: (1..=9).map(Point::Empty).collect(),
-        }
-    }
-
     /// Returns all rows
     pub fn rows(&self) -> Vec<Vec<Point>> {
         self.board.chunks(3).map(|points| points.to_vec()).collect()
@@ -112,7 +97,7 @@ impl Board {
     }
 
     /// Returns `Pointers` instance if there win in rows
-    fn is_rows_winner<'a>(&self, player: &'a Player) -> Option<&'a Pointers> {
+    pub fn is_rows_winner<'a>(&self, player: &'a Player) -> Option<&'a Pointers> {
         let rows = self.rows();
         let player_point = Point::from_str(player.pointer.to_string().as_str()).unwrap();
 
@@ -127,7 +112,7 @@ impl Board {
     }
 
     /// Returns `Pointers` instance if there win in columns
-    fn is_columns_winner<'a>(&self, player: &'a Player) -> Option<&'a Pointers> {
+    pub fn is_columns_winner<'a>(&self, player: &'a Player) -> Option<&'a Pointers> {
         let columns = self.columns();
         let player_point = Point::from_str(player.pointer.to_string().as_str()).unwrap();
 
@@ -142,7 +127,7 @@ impl Board {
     }
 
     /// Returns `Pointers` instance if there win in bla
-    fn is_horizontals_winner<'a>(&self, player: &'a Player) -> Option<&'a Pointers> {
+    pub fn is_horizontals_winner<'a>(&self, player: &'a Player) -> Option<&'a Pointers> {
         let player_point = Point::from_str(player.pointer.to_string().as_str()).unwrap();
         if self
             .horizontals()
@@ -179,6 +164,25 @@ impl Board {
     /// Returns `true` if the game is finished
     pub fn is_finished(&self) -> bool {
         self.board.iter().all(|point: &Point| !point.is_empty())
+    }
+}
+
+impl Default for Board {
+    fn default() -> Self {
+        Self {
+            board: (1..=9).map(Point::Empty).collect(),
+        }
+    }
+}
+
+impl FromStr for Point {
+    type Err = ();
+    fn from_str(str_point: &str) -> Result<Self, Self::Err> {
+        match str_point.to_lowercase().as_str() {
+            "x" => Ok(Self::X),
+            "o" => Ok(Self::O),
+            _ => Err(()),
+        }
     }
 }
 
