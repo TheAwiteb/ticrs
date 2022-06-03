@@ -3,6 +3,32 @@
 # Ticrs
 Rust Tic Tac Toy (x/o) 🦀
 
+
+<a href="https://www.gnu.org/licenses/">
+  <img src="https://img.shields.io/badge/license-AGPLv3-orange.svg" alt="License">
+</a>
+<a href="https://rust-lang.org/">
+  <img src="https://img.shields.io/badge/Made%20with-Rust-orange.svg" alt="Rust">
+</a>
+<br>
+<a href="https://github.com/theawiteb/ticrs">
+  <img src="https://badge.fury.io/gh/theawiteb%2Fticrs.svg" alt="version">
+</a>
+<a href="https://github.com/TheAwiteb/ticrs/issues?q=is%3Aissue+is%3Aopen+">
+  <img src="https://img.shields.io/github/issues/theawiteb/ticrs.svg" alt="issues-open">
+</a>
+<a href="https://github.com/TheAwiteb/ticrs/issues?q=is%3Aissue+is%3Aclosed+">
+  <img src="https://img.shields.io/github/issues-closed/theawiteb/ticrs.svg" alt="issues-closed">
+</a>
+<br><br>
+<a href="https://github.com/TheAwiteb/ticrs/actions/workflows/ci.yml">
+  <img src="https://github.com/TheAwiteb/ticrs/actions/workflows/ci.yml/badge.svg" alt="Continuous Integration">
+</a>
+<br>
+<a href="https://github.com/TheAwiteb/ticrs/actions/workflows/release.yml">
+  <img src="https://github.com/TheAwiteb/ticrs/actions/workflows/release.yml/badge.svg" alt="Release">
+</a>
+
 </div>
 
 ```
@@ -70,4 +96,4 @@ OPTIONS:
 | ![Option fixer](https://i.suar.me/e7qMG/l)  | ![X is Winner](https://i.suar.me/OrPzM/l) |
 
 ## License
-GNU Affero General Public License version 3 of the license for more see http://www.gnu.org/licenses/
+GNU Affero General Public License version 3 of the license for more see <https://www.gnu.org/licenses/>
