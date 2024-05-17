@@ -1,5 +1,7 @@
 <div align="center">
 
+Deprecation Notice: This project is no longer maintained.
+
 # Ticrs
 Rust Tic Tac Toy (x/o) 🦀
 
